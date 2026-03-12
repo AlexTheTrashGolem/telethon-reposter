@@ -13,4 +13,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY reposter.py .
 
 # Run the bot
-CMD ["python", "reposter.py"]
+CMD ["python", "-u", "reposter.py"]

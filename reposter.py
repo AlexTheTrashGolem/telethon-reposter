@@ -73,11 +73,11 @@ def looks_like_code(text: str):
     if len(text) > 10:
         return False
 
-    if not re.match(r'^[A-Za-z0-9]+$', text):
-        return False
-
-    if re.search(r'[aeiou]{3,}', text.lower()):
-        return False
+#    if not re.match(r'^[A-Za-z0-9]+$', text):
+#        return False
+#
+#    if re.search(r'[aeiou]{3,}', text.lower()):
+#        return False
 
     return True
 
