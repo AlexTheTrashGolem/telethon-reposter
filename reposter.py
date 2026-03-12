@@ -15,6 +15,7 @@ class HealthHandler(BaseHTTPRequestHandler):
 def run_health_server():
     port = int(os.environ.get("PORT", 10000))
     server = HTTPServer(("0.0.0.0", port), HealthHandler)
+    print(f"Health server running on port {port}")
     server.serve_forever()
 
 threading.Thread(target=run_health_server, daemon=True).start()
@@ -61,7 +62,8 @@ def looks_like_code(text: str):
 @client.on(events.NewMessage(chats=sources))
 async def handler(event):
     text = event.raw_text
-
+    # Debug: confirm we receive messages
+    print("Incoming:", text)
     if not looks_like_code(text):
         return
 
