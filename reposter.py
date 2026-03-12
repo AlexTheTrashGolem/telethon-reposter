@@ -27,11 +27,13 @@ api_hash = os.getenv("API_HASH")
 phone = os.getenv("PHONE")
 session_data = os.getenv("TELETHON_SESSION")
 
+print("Session env exists:", bool(os.getenv("TELETHON_SESSION")))
 if session_data:
     with open("session.session", "wb") as f:
         f.write(base64.b64decode(session_data))
+print("Session file created")
 
-sources = os.getenv("SOURCE_CHANNELS").split(",")
+sources = [c.strip() for c in os.getenv("SOURCE_CHANNELS").split(",")]
 target = os.getenv("TARGET_CHANNEL")
 prefix = os.getenv("PREFIX_TEXT")
 
@@ -74,7 +76,7 @@ async def handler(event):
         print("Posted:", text)
     except Exception as e:
         print("Failed:", e)
-
+print("Event handler registered for:", sources)
 
 async def main():
     print("Starting Telethon reposter...")
