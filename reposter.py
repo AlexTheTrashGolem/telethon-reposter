@@ -103,7 +103,7 @@ async def handler(event):
     new_text = f"{prefix}\n\n{text}"
 
     try:
-        await client.send_message(target, new_text)
+        await client.send_message(new_text, target)
         print("Posted:", text)
     except Exception as e:
         print("Failed:", e)
