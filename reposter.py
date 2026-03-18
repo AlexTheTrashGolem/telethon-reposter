@@ -100,10 +100,10 @@ async def handler(event):
         print("Filtered")
         return
 
-    new_text = f"{prefix}\n\n{text}"
+    new_text = f"{text}\n\n{prefix}"
 
     try:
-        await client.send_message(new_text, target)
+        await client.send_message(target, new_text)
         print("Posted:", text)
     except Exception as e:
         print("Failed:", e)
